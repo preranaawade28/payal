@@ -1,0 +1,16 @@
+Install .iso (Debian)
+
+RAM - 8GB
+
+Attach 4/5 disks with trueNAS [50GB each]
+
+Once installation is done.
+
+Keep the network adapter HostOnly / Bridge
+
+You will be able to access it through the WEB interface.
+
+Run the service of FTP/SMB or any other
+
+Inside the TrueNAS
+Create a pool of the storage and use it from the Windows.
