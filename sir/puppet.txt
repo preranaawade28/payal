@@ -1,0 +1,59 @@
+Server -> pserver
+client -> pclient
+
+ping each other with the name (static /etc/hosts)
+
+###SERVER
+
+apt update
+apt install puppetserver -y
+
+puppetserver --version
+sudo systemctl enable puppetserver
+
+
+################
+nano /etc/puppet/puppet.conf
+
+[main]
+server = pserver
+
+
+####
+sudo systemctl start puppetserver
+
+systemctl is-active puppetserver
+
+ss -antp
+it's working on the port 8140
+
+
+# to check the configuration
+sudo puppet config print server
+
+output - pserver
+
+
+################################CLIENT
+
+sudo apt install puppet-agent -y
+
+
+sudo nano /etc/puppet/puppet.conf
+
+[main]
+server = pserver
+
+sudo systemctl enable puppet
+sudo systemctl start puppet
+
+
+sudo puppet config print server
+output - pserver
+
+
+
+
+
+
+
