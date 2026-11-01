@@ -1,0 +1,61 @@
+docker swarm
+ master 1----->1 instance ---> key 1 ---ppk ---all trafic
+ ds node1 node2 node3 ------3 instance--- key 1---ppk--all traffic
+
+master 
+hostname change
+sudo apt update && sudo apt install docker
+duplicate 
+sudo usermod admin -aG docker
+newgrp docker
+docker swarm init --advertise-addr <MASTER_PRIVATE_IP>
+TOKEN
+(to join nodes)
+
+***   NGINX 
+
+docker service create --name web --replicas 4 -p 8080:80 nginx
+docker service ls
+docker service ps web
+http://of all :8080
+
+image build 
+mkdir prerana
+cd prerana
+nano index.html
+---<h1>hello prerana--
+
+nano Dockerfile
+FROM ubuntu/apache2
+COPY index.html /var/www/html/
+  
+
+docker images 
+docker build -t piu .
+docker images
+docker run -d --name true -p 8000:80 piu
+  docker ps -a
+
+----to push docker hub----
+docker login
+  docker tag piu:latest preranaawade/piu:latest
+docker push preranaawade/piu
+
+  
+docker pull preranaawade/piu
+docker service create --name nasa -p 80:80 preranaawade/piu
+docker service scale myweb=3
+docker service ls
+docker service ps web
+http://of all :80:80
+
+
+
+***node1 node2 node3
+hostname change
+sudo apt update && sudo apt install docker
+duplicate SESSION
+sudo usermod admin -aG docker
+newgrp docker
+and paste TOKEN
+This node joined a swarm as a worker.
